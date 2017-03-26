@@ -5,14 +5,16 @@
     background: ghostwhite;
 }
 
-#sell-image {
+#image {
     width: 100%;
     height: 120px;
+    background: url(/resources/images/add-image.jpg);
 }
 
 #input-image-div {
     width: inherit;
     margin-top: 10px;
+
 }
 
 #load-image {

@@ -18,4 +18,5 @@
 
 #hello-div {
     object-fit: contain;
+    background: url(/resources/images/main-image.jpg);
 }
