@@ -1,0 +1,21 @@
+
+.main-block {
+    padding: 10px 20px 10px 20px;
+
+}
+
+.menu {
+    width: 15%;
+    float: left;
+    padding-left: 30px;
+}
+
+.content {
+    width: 100%;
+    height: auto;
+    float: right;
+}
+
+#hello-div {
+    object-fit: contain;
+}

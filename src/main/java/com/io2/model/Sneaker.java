@@ -1,10 +1,10 @@
 package com.io2;
 
-import com.sun.javafx.beans.IDProperty;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Niki on 2017-03-18.
@@ -14,7 +14,11 @@ public class Sneaker {
     @Id
     @GeneratedValue
     private Long id;
+    @NotNull
+    @Column(name = "model", nullable = false)
     private String model;
+    @NotNull
+    @Column(name = "size", nullable = false)
     private int size;
 
     public Long getId() {
