@@ -1,4 +1,4 @@
-package com.io2;
+package com.io2.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
