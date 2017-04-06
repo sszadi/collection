@@ -1,15 +1,13 @@
 package com.io2.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
  * Created by Niki on 2017-03-18.
  */
 @Entity
+@Table(name = "sneakers")
 public class Sneaker {
     @Id
     @GeneratedValue

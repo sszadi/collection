@@ -49,19 +49,6 @@
             <p class="paragraph">US 11, 450 USD</p>
         </a>
     </div>
-    <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-            <img src="/web/images/im7.jpg" alt="...">
-            <h5 class="description">Asics Gel Lyte III Flamingo</h5>
-            <p class="paragraph">US 9, 230 USD</p>
-        </a>
-        <a href="#" class="thumbnail">
-            <img src="/web/images/im8.jpg" alt="...">
-            <h5 class="description">New Balance 574 Quatro Azules</h5>
-            <p class="paragraph">US 11, 178 USD</p>
-
-        </a>
-    </div>
 </div>
 </body>
 </html>

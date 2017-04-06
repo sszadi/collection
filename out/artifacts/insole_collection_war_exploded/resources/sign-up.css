@@ -1,0 +1,19 @@
+#image {
+    float: left;
+    width: 50%;
+    height: 270px;
+    background: url(/resources/images/sign-up-image.jpg);
+}
+
+#sign-up-div {
+    float: right;
+    width: 50%;
+    height: 270px;
+    padding-top: 20px;
+}
+
+#submit-button {
+    float: right;
+    margin-right: 15px;
+    margin-top: 5px;
+}

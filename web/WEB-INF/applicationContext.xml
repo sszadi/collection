@@ -4,15 +4,21 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
- http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
- http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
- http://www.springframework.org/schema/context
- http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa">
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+         http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 
     <mvc:resources location="/resources/" mapping="/resources/**"/>
-    <context:component-scan base-package="com.io2.controllers"/>
+
+    <context:component-scan base-package="com.io2.controller"/>
     <context:annotation-config/>
     <mvc:annotation-driven/>
 
@@ -49,7 +55,6 @@
             </props>
         </property>
     </bean>
-
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -57,6 +62,5 @@
     </bean>
 
     <jpa:repositories base-package="com.io2"/>
-
 
 </beans>
