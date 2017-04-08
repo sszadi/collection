@@ -1,8 +1,7 @@
 package com.io2.controller;
 
-import com.io2.repository.SneakerRepository;
 import com.io2.model.Sneaker;
-import org.springframework.ui.Model;
+import com.io2.repository.SneakerRepository;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +25,8 @@ public class HelloController {
         return "index";
     }
 
-    @RequestMapping("/index")
-    public String hello(Model model) {
+    @RequestMapping("/hello")
+    public String hello() {
         return "index";
     }
 

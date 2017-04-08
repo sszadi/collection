@@ -1,28 +1,22 @@
 package com.io2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.io2.annotation.PasswordMatches;
+import com.io2.annotation.ValidEmail;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
  * Created by Niki on 2017-04-04.
  */
 
-@Entity
-@Table(name = "users")
-public class User {
+@PasswordMatches
+public class UserDTO {
 
-    private long id;
     private String email;
     private String username;
     private String password;
-    private boolean enabled;
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private String matchingPassword;
 
     public void setEmail(String email) {
         this.email = email;
@@ -36,13 +30,8 @@ public class User {
         this.password = password;
     }
 
-    @Id
-    @GeneratedValue
-    public long getId() {
-        return id;
-    }
-
     @NotNull
+    @ValidEmail
     public String getEmail() {
         return email;
     }
@@ -57,12 +46,11 @@ public class User {
         return password;
     }
 
-    @NotNull
-    public boolean isEnabled() {
-        return enabled;
+    public String getMatchingPassword() {
+        return matchingPassword;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
     }
 }

@@ -6,24 +6,28 @@ http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
-    <http auto-config="true">
+    <http auto-config="true" use-expressions="true">
+        <form-login login-page="/"
+                    default-target-url="/"
+                    authentication-failure-url="/login?error=true"
+                    username-parameter="email"
+                    password-parameter="password"/>
+        <logout logout-success-url="/home"/>
+        <csrf disabled="true"/>
     </http>
 
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <beans:property name="url" value="jdbc:mysql://localhost:3306/users-database"/>
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/insole-database"/>
         <beans:property name="username" value="root"/>
         <beans:property name="password" value="password"/>
     </beans:bean>
 
+    <beans:bean id="userDetailsService"
+                class="com.io2.service.MyUserDetailsService"/>
+
     <authentication-manager>
-        <authentication-provider>
-            <jdbc-user-service data-source-ref="dataSource"
-                               users-by-username-query=
-                                       "SELECT email, username, password, enabled FROM users WHERE username=?"
-                               authorities-by-username-query=
-                                       "SELECT email, username, 'ROLE_USER' FROM users WHERE username =?  "/>
-        </authentication-provider>
+        <authentication-provider user-service-ref="userDetailsService"/>
     </authentication-manager>
 
 </beans:beans>

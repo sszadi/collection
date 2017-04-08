@@ -18,7 +18,7 @@
 
     <mvc:resources location="/resources/" mapping="/resources/**"/>
 
-    <context:component-scan base-package="com.io2.controller"/>
+    <context:component-scan base-package="com.io2"/>
     <context:annotation-config/>
     <mvc:annotation-driven/>
 
@@ -33,7 +33,7 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/users-database"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/insole-database"/>
         <property name="username" value="root"/>
         <property name="password" value="password"/>
     </bean>
@@ -62,5 +62,6 @@
     </bean>
 
     <jpa:repositories base-package="com.io2"/>
+
 
 </beans>
