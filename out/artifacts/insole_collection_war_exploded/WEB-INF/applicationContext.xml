@@ -63,5 +63,4 @@
 
     <jpa:repositories base-package="com.io2"/>
 
-
 </beans>

@@ -26,8 +26,19 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
     <beans:bean id="userDetailsService"
                 class="com.io2.service.MyUserDetailsService"/>
 
+    <beans:bean id="bCryptPasswordEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </beans:bean>
+
+    <beans:bean id="daoAuthenticationProvider"
+                class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="userDetailsService"/>
+        <beans:property name="passwordEncoder" ref="bCryptPasswordEncoder"/>
+    </beans:bean>
+
     <authentication-manager>
-        <authentication-provider user-service-ref="userDetailsService"/>
+        <authentication-provider ref="daoAuthenticationProvider"/>
     </authentication-manager>
+
 
 </beans:beans>
