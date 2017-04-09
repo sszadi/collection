@@ -4,8 +4,7 @@ import com.io2.annotation.ValidEmail;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Created by Niki on 2017-04-04.
@@ -15,18 +14,12 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue
     private long id;
     private String email;
     private String username;
     private String password;
     private boolean enabled;
-    @Transient
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
-    @JoinTable(name = "Users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<Role> roles = new ArrayList<>();
+    private Collection<Role> roles;
 
     public void setId(long id) {
         this.id = id;
@@ -44,6 +37,8 @@ public class User {
         this.password = password;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -73,11 +68,14 @@ public class User {
         this.enabled = enabled;
     }
 
-    public List<Role> getRoles() {
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 }

@@ -1,8 +1,8 @@
 package com.io2.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 /**
  * Created by Niki on 2017-04-07.
@@ -10,12 +10,9 @@ import java.util.List;
 @Entity
 @Table(name = "roles")
 public class Role {
-    @Id
-    @GeneratedValue
+
     private Long id;
-    @Transient
-    @ManyToMany(mappedBy = "roles", targetEntity = User.class)
-    private List<User> users = new ArrayList<>();
+    private Collection<User> users;
     private String name;
 
     public Role() {
@@ -26,6 +23,8 @@ public class Role {
         this.name = name;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -34,14 +33,16 @@ public class Role {
         this.id = id;
     }
 
-    public List<User> getUsers() {
+    @ManyToMany(mappedBy = "roles", targetEntity = User.class, cascade = CascadeType.ALL)
+    public Collection<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Collection<User> users) {
         this.users = users;
     }
 
+    @NotNull
     public String getName() {
         return name;
     }
@@ -49,4 +50,6 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

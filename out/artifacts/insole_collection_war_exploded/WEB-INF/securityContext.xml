@@ -1,14 +1,37 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:mvc="http://www.springframework.org/schema/mvc"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+
+    <context:component-scan base-package="com.io2"/>
+    <context:annotation-config/>
+    <mvc:annotation-driven/>
+
+    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix">
+            <beans:value>/WEB-INF/views/</beans:value>
+        </beans:property>
+        <beans:property name="suffix">
+            <beans:value>.jsp</beans:value>
+        </beans:property>
+    </beans:bean>
+
+
     <http auto-config="true" use-expressions="true">
-        <form-login login-page="/"
-                    default-target-url="/"
+
+        <form-login login-page="/login"
+                    default-target-url="/welcome"
                     authentication-failure-url="/login?error=true"
                     username-parameter="email"
                     password-parameter="password"/>
@@ -37,8 +60,18 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
     </beans:bean>
 
     <authentication-manager>
-        <authentication-provider ref="daoAuthenticationProvider"/>
+        <authentication-provider user-service-ref="userDetailsService">
+            <password-encoder ref="bCryptPasswordEncoder">
+            </password-encoder>
+        </authentication-provider>
     </authentication-manager>
+
+    <beans:bean id="expressionHandler"
+                class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler"/>
+
+    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled">
+        <expression-handler ref="expressionHandler"/>
+    </global-method-security>
 
 
 </beans:beans>
