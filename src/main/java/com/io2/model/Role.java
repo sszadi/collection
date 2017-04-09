@@ -33,7 +33,7 @@ public class Role {
         this.id = id;
     }
 
-    @ManyToMany(mappedBy = "roles", targetEntity = User.class, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "roles", targetEntity = User.class, cascade = CascadeType.MERGE)
     public Collection<User> getUsers() {
         return users;
     }

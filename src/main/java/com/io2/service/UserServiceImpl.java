@@ -1,9 +1,9 @@
 package com.io2.service;
 
 import com.io2.exception.EmailExistsException;
-import com.io2.model.Role;
 import com.io2.model.User;
 import com.io2.model.UserDTO;
+import com.io2.repository.RoleRepository;
 import com.io2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,8 +21,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
     private PasswordEncoder bCryptPasswordEncoder;
-    private Role role = new Role("ROLE_USER");
 
     public User registerNewUser(UserDTO userDTO) throws EmailExistsException {
 
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
         user.setUsername(userDTO.getUsername());
         user.setEnabled(true);
         user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
-        user.setRoles(Collections.singletonList(role));
+        user.setRoles(Collections.singletonList(roleRepository.findByName("ROLE_USER")));
 
         return userRepository.save(user);
     }

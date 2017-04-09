@@ -35,7 +35,9 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
                     authentication-failure-url="/login?error=true"
                     username-parameter="email"
                     password-parameter="password"/>
-        <logout logout-success-url="/home"/>
+        <logout
+                logout-success-url="/welcome"
+                delete-cookies="JSESSIONID"/>
         <csrf disabled="true"/>
     </http>
 
