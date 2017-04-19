@@ -13,11 +13,16 @@ public class Sneaker {
     @GeneratedValue
     private Long id;
     @NotNull
-    @Column(name = "model", nullable = false)
-    private String model;
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Brand.class)
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
     @NotNull
     @Column(name = "size", nullable = false)
-    private int size;
+    private Double size;
+    @NotNull
+    @Column(name = "price", nullable = false)
+    private Double price;
+
 
     public Long getId() {
         return id;
@@ -27,27 +32,35 @@ public class Sneaker {
         this.id = id;
     }
 
-    public String getModel() {
-        return model;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
-    public int getSize() {
+    public Double getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(Double size) {
         this.size = size;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "Sneaker{" +
                 "id=" + id +
-                ", model='" + model + '\'' +
+                ", brand='" + brand + '\'' +
                 ", size=" + size +
                 '}';
     }

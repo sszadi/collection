@@ -6,8 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<fmt:setBundle basename="messages"/>
 <html>
 <head>
     <title>Insole</title>
@@ -20,6 +23,17 @@
 <div class="main-block">
 
     <jsp:include page="headline.jsp"/>
+
+
+    <c:if test="${param.error == true}">
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <spring:message code="message.loginError">
+            </spring:message>
+        </div>
+
+    </c:if>
 
     <div class=content>
         <div class="container">
