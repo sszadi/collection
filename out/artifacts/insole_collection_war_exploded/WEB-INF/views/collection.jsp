@@ -1,3 +1,5 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Insole</title>
@@ -9,6 +11,26 @@
 <div class="main-block">
 
     <jsp:include page="headline.jsp"/>
+
+    <c:if test="${param.addError == true}">
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <spring:message code="message.addError">
+        </spring:message>
+    </div>
+
+    </c:if>
+
+    <c:if test="${param.addSucc == true}">
+    <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <spring:message code="message.addSucc">
+        </spring:message>
+    </div>
+
+    </c:if>
 
     <div class="container">
         <div class="jumbotron" id="image">

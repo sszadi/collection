@@ -22,6 +22,10 @@ public class Sneaker {
     @NotNull
     @Column(name = "price", nullable = false)
     private Double price;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = User.class)
+    @JoinColumn(name = "user_id")
+    private User owner;
 
 
     public Long getId() {
@@ -56,6 +60,15 @@ public class Sneaker {
         this.price = price;
     }
 
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     @Override
     public String toString() {
         return "Sneaker{" +
@@ -64,4 +77,6 @@ public class Sneaker {
                 ", size=" + size +
                 '}';
     }
+
+
 }

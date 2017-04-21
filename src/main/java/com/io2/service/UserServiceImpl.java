@@ -6,6 +6,9 @@ import com.io2.model.UserDTO;
 import com.io2.repository.RoleRepository;
 import com.io2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +44,15 @@ public class UserServiceImpl implements UserService {
         user.setRoles(Collections.singletonList(roleRepository.findByName("ROLE_USER")));
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getCurrentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetail = (UserDetails) auth.getPrincipal();
+
+        User user = userRepository.findByEmail(userDetail.getUsername());
+        return user;
     }
 
     private boolean isEmailExist(String email) {

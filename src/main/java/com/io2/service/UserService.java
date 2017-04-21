@@ -9,4 +9,6 @@ import com.io2.model.UserDTO;
  */
 public interface UserService {
     User registerNewUser(UserDTO userDTO) throws EmailExistsException;
+
+    User getCurrentUser();
 }

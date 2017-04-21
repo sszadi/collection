@@ -38,6 +38,7 @@ public class UserController {
         return "sign-up";
     }
 
+    //TODO: udana rejestracja!
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult result) {
         User registeredUser;

@@ -1,7 +1,6 @@
 package com.io2.controller;
 
 import com.io2.model.Sneaker;
-import com.io2.repository.SneakerRepository;
 import com.io2.service.CollectionCreatorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CollectionController {
 
     @Autowired
-    private SneakerRepository sneakerRepository;
-    @Autowired
     private CollectionCreatorServiceImpl collectionCreatorService;
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -29,9 +26,14 @@ public class CollectionController {
         return "add";
     }
 
+    //TODO messages.properties
     @PostMapping("/add")
-    public void addSneaker(Sneaker sneaker, Model model) {
-        model.addAttribute("message", sneaker.getBrand() + " added to your collection.");
-        sneakerRepository.save(sneaker);
+    public String addSneaker(Sneaker sneaker, Model model) {
+        if (collectionCreatorService.addSneaker(sneaker)) {
+            model.addAttribute("addSucc", true);
+        } else {
+            model.addAttribute("addError", true);
+        }
+        return "redirect:/collection";
     }
 }
