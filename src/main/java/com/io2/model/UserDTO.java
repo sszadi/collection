@@ -3,7 +3,6 @@ package com.io2.model;
 import com.io2.annotation.PasswordMatches;
 import com.io2.annotation.ValidEmail;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -30,6 +29,10 @@ public class UserDTO {
         this.password = password;
     }
 
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
+    }
+
     @NotNull
     @ValidEmail
     public String getEmail() {
@@ -46,11 +49,9 @@ public class UserDTO {
         return password;
     }
 
+    @NotNull
     public String getMatchingPassword() {
         return matchingPassword;
     }
 
-    public void setMatchingPassword(String matchingPassword) {
-        this.matchingPassword = matchingPassword;
-    }
 }

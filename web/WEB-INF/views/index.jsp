@@ -35,6 +35,15 @@
 
     </c:if>
 
+    <c:if test="${not empty regSucc}">
+        <div class="alert alert-success" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <spring:message code="message.regSucc">
+            </spring:message>
+        </div>
+
+    </c:if>
     <div class=content>
         <div class="container">
             <div class="jumbotron" id=hello-div>

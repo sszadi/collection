@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
                             + userDTO.getEmail());
         }
 
+
         User user = new User();
         user.setEmail(userDTO.getEmail());
         user.setUsername(userDTO.getUsername());
@@ -51,12 +52,18 @@ public class UserServiceImpl implements UserService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetail = (UserDetails) auth.getPrincipal();
 
-        User user = userRepository.findByEmail(userDetail.getUsername());
-        return user;
+        return userRepository.findByEmail(userDetail.getUsername());
     }
 
     private boolean isEmailExist(String email) {
         User user = userRepository.findByEmail(email);
         return user != null;
     }
+
+
+    public boolean isPasswordTheSame(String password, String repeatedPassword) {
+        return password.equals(repeatedPassword);
+    }
+
+
 }

@@ -9,7 +9,8 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * Created by Niki on 2017-04-07.
  */
-public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object>{
+
+public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
     @Override
     public void initialize(PasswordMatches passwordMatches) {
 

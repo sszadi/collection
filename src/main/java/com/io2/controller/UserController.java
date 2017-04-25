@@ -38,19 +38,28 @@ public class UserController {
         return "sign-up";
     }
 
-    //TODO: udana rejestracja!
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult result) {
+        ModelAndView modelAndView = new ModelAndView();
         User registeredUser;
-        registeredUser = createUserAccount(userDTO, result);
+        registeredUser = createUserAccount(userDTO);
+
         if (registeredUser == null) {
-            result.rejectValue("email", "message.regError");
+            modelAndView.addObject("regError", "messages.regError");
+            modelAndView.setViewName("sign-up");
+            return modelAndView;
         }
-        if (result.hasErrors()) {
-            return new ModelAndView("index", "user", userDTO);
-        } else {
-            return new ModelAndView("successRegister", "user", userDTO);
+
+        if (!userService.isPasswordTheSame(userDTO.getPassword(), userDTO.getMatchingPassword())) {
+            modelAndView.addObject("passwordError", "messages.passwordError");
+            modelAndView.setViewName("sign-up");
+            return modelAndView;
         }
+
+        modelAndView.addObject("regSucc", "messages.regSucc");
+        modelAndView.setViewName("index");
+        return modelAndView;
+
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -68,11 +77,10 @@ public class UserController {
     }
 
 
-    private User createUserAccount(UserDTO userDTO, BindingResult result) {
-        User registeredUser;
+    private User createUserAccount(UserDTO userDTO) {
+        User registeredUser = null;
         try {
             registeredUser = userService.registerNewUser(userDTO);
-
         } catch (EmailExistsException ex) {
             return null;
         }
