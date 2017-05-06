@@ -8,53 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f7dc40b-cdae-4018-a0c9-4652ed43adec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/io2/controller/CollectionCreatorController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/io2/service/FileService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/io2/service/FileServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/S3settings.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/collection.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/JavaConfig.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/JavaConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/CollectionController.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/CollectionController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/HelloController.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/HelloController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/repository/SneakerRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/repository/SneakerRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/service/CollectionCreatorService.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/service/CollectionCreatorService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/service/CollectionCreatorServiceImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/service/CollectionCreatorServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/JavaConfig.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/JavaConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/controller/CollectionController.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/controller/CollectionController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/controller/HelloController.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/controller/HelloController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/repository/SneakerRepository.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/repository/SneakerRepository.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/service/CollectionCreatorService.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/service/CollectionCreatorService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/service/CollectionCreatorServiceImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/classes/com/io2/service/CollectionCreatorServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/securityContext.xml" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/securityContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/views/add.jsp" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/views/add.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/views/collection.jsp" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/views/collection.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/views/sign-up.jsp" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/views/sign-up.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/resources/index.css" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/resources/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/securityContext.xml" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/securityContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/views/add.jsp" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/views/add.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/views/collection.jsp" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/views/collection.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/views/sign-up.jsp" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/views/sign-up.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/resources/index.css" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/resources/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/io2/JavaConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/io2/JavaConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/io2/controller/CollectionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/io2/controller/CollectionController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/io2/controller/HelloController.java" afterPath="$PROJECT_DIR$/src/main/java/com/io2/controller/HelloController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/io2/repository/SneakerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/io2/repository/SneakerRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/io2/service/CollectionCreatorService.java" afterPath="$PROJECT_DIR$/src/main/java/com/io2/service/CollectionCreatorService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/io2/service/CollectionCreatorServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/io2/service/CollectionCreatorServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/securityContext.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/securityContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/add.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/add.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/collection.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/collection.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/resources/index.css" afterPath="$PROJECT_DIR$/web/resources/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -142,8 +96,8 @@
       <file leaf-file-name="S3settings.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/S3settings.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="49" lean-forward="true" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
+            <state relative-caret-position="34">
+              <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -1305,12 +1259,12 @@
       <workItem from="1493235144037" duration="308000" />
       <workItem from="1493375314754" duration="3781000" />
       <workItem from="1493478631322" duration="2203000" />
-      <workItem from="1494064505330" duration="8405000" />
+      <workItem from="1494064505330" duration="9122000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201131000" />
+    <option name="totallyTimeSpent" value="201848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -1852,8 +1806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/S3settings.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="49" lean-forward="true" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
+        <state relative-caret-position="34">
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
           <folding />
         </state>
       </provider>

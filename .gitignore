@@ -11,7 +11,7 @@
 *.ctxt
 
 # Properties 
-S3settings.properties
+/src/main/resources/S3settings.properties
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
