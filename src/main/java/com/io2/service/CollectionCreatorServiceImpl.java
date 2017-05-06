@@ -7,7 +7,9 @@ import com.io2.repository.BrandRepository;
 import com.io2.repository.SneakerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -25,6 +27,8 @@ public class CollectionCreatorServiceImpl implements CollectionCreatorService {
     private UserService userService;
     @Autowired
     private SneakerRepository sneakerRepository;
+    @Autowired
+    private FileService fileService;
 
     @Override
     public List<Brand> getAllBrands() {
@@ -45,11 +49,18 @@ public class CollectionCreatorServiceImpl implements CollectionCreatorService {
         return sizes;
     }
 
-    public Boolean addSneaker(Sneaker sneaker) {
+    public Boolean addSneaker(Sneaker sneaker, MultipartFile file) throws IOException {
         User user = userService.getCurrentUser();
         sneaker.setOwner(user);
+        handleFileUpload(file);
         Sneaker result = sneakerRepository.save(sneaker);
         return result != null;
+    }
+
+    public void handleFileUpload(MultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            fileService.uploadFile(file.getInputStream());
+        }
     }
 
 

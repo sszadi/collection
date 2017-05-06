@@ -24,7 +24,8 @@
             </spring:message>
         </div>
 
-    </c:if>\
+    </c:if>
+
     <c:if test="${not empty passwordError}">
         <div class="alert alert-danger" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

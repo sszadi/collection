@@ -68,6 +68,12 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
         </authentication-provider>
     </authentication-manager>
 
+    <beans:bean id="filterMultipartResolver"
+                class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="maxUploadSize" value="10000000"/>
+    </beans:bean>
+
+
     <beans:bean id="expressionHandler"
                 class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler"/>
 

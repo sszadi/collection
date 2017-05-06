@@ -17,4 +17,6 @@ public interface SneakerRepository extends CrudRepository<Sneaker, Long> {
 
     Sneaker save(Sneaker sneaker);
 
+    List<Sneaker> findByOwner_Id(Long id);
+
 }

@@ -36,10 +36,6 @@ public class HelloController {
         return "index";
     }
 
-    @RequestMapping(value = "/collection", method = RequestMethod.GET)
-    public String collection() {
-        return "collection";
-    }
 
 
 //    @RequestMapping(value = "/add", method = RequestMethod.POST)
