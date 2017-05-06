@@ -2,7 +2,9 @@ package com.io2.service;
 
 import com.io2.model.Brand;
 import com.io2.model.Sneaker;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -15,5 +17,7 @@ interface CollectionCreatorService {
 
     Map<Float, String> getSizes();
 
-    Boolean addSneaker(Sneaker sneaker);
+    Boolean addSneaker(Sneaker sneaker, MultipartFile file) throws IOException;
+
+    void handleFileUpload(MultipartFile file) throws IOException;
 }

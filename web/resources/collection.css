@@ -1,0 +1,15 @@
+#collection {
+    float: left;
+    width: 80%;
+    margin: 20px;
+}
+
+#nav-container h4 {
+    float: left;
+}
+
+#nav-container a {
+    float: right;
+    margin-left: 5px;
+    width: 200px;
+}

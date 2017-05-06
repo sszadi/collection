@@ -30,7 +30,7 @@
             <div class="panel panel-info" id="sell-div">
                 <h3>Add sneakers to your collection.</h3>
                 <!--/*@thymesVar id="sneaker" type="com.io2.model.Sneaker"*/-->
-                <form method="post" th:object="${sneaker}" class="form-horizontal">
+                <form enctype="multipart/form-data" method="post" th:object="${sneaker}" class="form-horizontal">
                     <div class="form-group">
                         <label for="modelSelect">Model</label>
                         <select class="form-control" id="modelSelect" th:field="*{brand}" name="brand" required>
@@ -59,20 +59,19 @@
                         </br>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
+
                 </form>
 
-            </div>
+                <div class="menu">
+                    <jsp:include page="menu.jsp"/>
+                </div>
 
-            <div class="menu">
-                <jsp:include page="menu.jsp"/>
             </div>
 
         </div>
 
+
     </div>
-
-
-</div>
 
 </body>
 </html>
