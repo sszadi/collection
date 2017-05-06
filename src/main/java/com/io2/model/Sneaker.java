@@ -23,6 +23,9 @@ public class Sneaker {
     @Column(name = "price", nullable = false)
     private Double price;
     @NotNull
+    @Column(name="filename", nullable = false)
+    private String filename;
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User owner;
@@ -60,13 +63,20 @@ public class Sneaker {
         this.price = price;
     }
 
-
     public User getOwner() {
         return owner;
     }
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     @Override

@@ -3,14 +3,21 @@ package com.io2.controller;
 import com.io2.model.Sneaker;
 import com.io2.model.User;
 import com.io2.repository.SneakerRepository;
+import com.io2.service.FileService;
 import com.io2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Niki on 2017-04-25.
@@ -22,15 +29,41 @@ public class CollectionController {
     SneakerRepository sneakerRepository;
     @Autowired
     UserService userService;
+    @Autowired
+    FileService fileService;
 
 
     @RequestMapping(value = "/collection", method = RequestMethod.GET)
     public String collection(Model model) {
         User user = userService.getCurrentUser();
         List<Sneaker> collection = sneakerRepository.findByOwner_Id(user.getId());
+
+//        List<InputStream> images = getCollectionImages(collection);
+//        Map<Sneaker, InputStream> collectionMap = generateSneakerImagesMap(collection, images);
+
         model.addAttribute("collectionList", collection);
 
         return "collection";
+    }
+
+    @RequestMapping(value = "/images/{filename}", method = RequestMethod.GET)
+    public void getFile(@PathVariable("filename") String filename, HttpServletResponse response) {
+        fileService.getFile(filename, response);
+    }
+
+    private Map<Sneaker, InputStream> generateSneakerImagesMap(List<Sneaker> collection, List<InputStream> images) {
+        Map<Sneaker, InputStream> collectionMap = new HashMap<>();
+
+        for (int i = 0; i < collection.size(); i++) {
+            collectionMap.put(collection.get(i), images.get(i));
+        }
+        return collectionMap;
+    }
+
+    private List<InputStream> getCollectionImages(List<Sneaker> collection) {
+        List<InputStream> images = new LinkedList<>();
+
+        return images;
     }
 
 }

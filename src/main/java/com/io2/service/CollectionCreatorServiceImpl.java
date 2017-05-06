@@ -52,15 +52,18 @@ public class CollectionCreatorServiceImpl implements CollectionCreatorService {
     public Boolean addSneaker(Sneaker sneaker, MultipartFile file) throws IOException {
         User user = userService.getCurrentUser();
         sneaker.setOwner(user);
-        handleFileUpload(file);
+        String filename = handleFileUpload(file);
+        sneaker.setFilename(filename);
         Sneaker result = sneakerRepository.save(sneaker);
         return result != null;
     }
 
-    public void handleFileUpload(MultipartFile file) throws IOException {
+    public String handleFileUpload(MultipartFile file) throws IOException {
+        String filename = null;
         if (!file.isEmpty()) {
-            fileService.uploadFile(file.getInputStream());
+            filename = fileService.uploadFile(file.getInputStream());
         }
+        return filename;
     }
 
 

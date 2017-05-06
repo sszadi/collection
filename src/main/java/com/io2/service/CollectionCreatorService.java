@@ -19,5 +19,5 @@ interface CollectionCreatorService {
 
     Boolean addSneaker(Sneaker sneaker, MultipartFile file) throws IOException;
 
-    void handleFileUpload(MultipartFile file) throws IOException;
+    String handleFileUpload(MultipartFile file) throws IOException;
 }
