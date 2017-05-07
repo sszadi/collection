@@ -49,7 +49,7 @@
 
                 <h4>My Collection</h4>
 
-                <a href="..." type="button" class="btn btn-default">My WTB list</a>
+                <a href="/list" type="button" class="btn btn-default">My WTB list</a>
 
                 <a href="/add" type="button" class="btn btn-default">Add sneakers</a>
             </div>

@@ -40,18 +40,20 @@
                         </select>
                         </br>
                         <label for="sizeSelect">Size</label>
-                        <!--/*@thymesVar id="brand" type="com.io2.model.Brand"*/-->
-                        <select multiple required name="size" th:object="${brand}" th:field="*{size}"
+                        <!--/*@thymesVar id="sneaker" type="com.io2.model.Sneaker"*/-->
+                        <select multiple required name="size" th:object="${sneaker}" th:field="*{size}"
                                 class="form-control" id="sizeSelect">
                             <c:forEach items="${sizes}" var="size" varStatus="loop">
                                 <option value="${size.key}">${size.value}</option>
                             </c:forEach>
                         </select>
                         </br>
-                        <label for="price">Price</label>
-                        <input type="text" th:field="*{price}" class="form-control"
-                               aria-label="Amount (to the nearest dollar)"
-                               id="price" name="price" required>
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" th:field="*{price}" name="price" class="form-control"
+                                   aria-label="Amount (to the nearest dollar)" required>
+                            <span class="input-group-addon">.00</span>
+                        </div>
                         <div id="input-image-div">
                             <label for="file">Image input</label>
                             <input multiple type="file" id="file" name="file">
@@ -62,16 +64,18 @@
 
                 </form>
 
-                <div class="menu">
-                    <jsp:include page="menu.jsp"/>
-                </div>
+            </div>
 
+            <div class="menu">
+                <jsp:include page="menu.jsp"/>
             </div>
 
         </div>
 
-
     </div>
+
+
+</div>
 
 </body>
 </html>

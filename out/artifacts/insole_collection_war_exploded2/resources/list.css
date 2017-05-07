@@ -1,0 +1,10 @@
+.list-div {
+    width: 75%;
+    margin-right: 50px;
+    float: right;
+    margin-bottom: 10px;
+}
+
+.listbox{
+    list-style-type: none;
+}
