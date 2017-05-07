@@ -33,6 +33,7 @@
                 <form enctype="multipart/form-data" method="post" th:object="${sneaker}" class="form-horizontal">
                     <div class="form-group">
                         <label for="modelSelect">Model</label>
+                        <!--/*@thymesVar id="brand" type="com.io2.model.Brand"*/-->
                         <select class="form-control" id="modelSelect" th:field="*{brand}" name="brand" required>
                             <c:forEach items="${brands}" var="brand" varStatus="loop">
                                 <option value="${brand.id}">${brand.name}</option>

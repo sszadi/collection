@@ -1,5 +1,7 @@
 package com.io2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
@@ -34,6 +36,7 @@ public class Role {
     }
 
     @ManyToMany(mappedBy = "roles", targetEntity = User.class, cascade = CascadeType.MERGE)
+    @JsonBackReference
     public Collection<User> getUsers() {
         return users;
     }

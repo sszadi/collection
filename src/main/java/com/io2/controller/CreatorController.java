@@ -17,7 +17,7 @@ import java.io.IOException;
  * Created by Niki on 2017-04-19.
  */
 @Controller
-public class CollectionCreatorController {
+public class CreatorController {
 
     @Autowired
     private CollectionCreatorServiceImpl collectionCreatorService;

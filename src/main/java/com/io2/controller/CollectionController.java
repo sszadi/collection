@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Niki on 2017-04-25.
@@ -37,10 +33,6 @@ public class CollectionController {
     public String collection(Model model) {
         User user = userService.getCurrentUser();
         List<Sneaker> collection = sneakerRepository.findByOwner_Id(user.getId());
-
-//        List<InputStream> images = getCollectionImages(collection);
-//        Map<Sneaker, InputStream> collectionMap = generateSneakerImagesMap(collection, images);
-
         model.addAttribute("collectionList", collection);
 
         return "collection";
@@ -49,21 +41,6 @@ public class CollectionController {
     @RequestMapping(value = "/images/{filename}", method = RequestMethod.GET)
     public void getFile(@PathVariable("filename") String filename, HttpServletResponse response) {
         fileService.getFile(filename, response);
-    }
-
-    private Map<Sneaker, InputStream> generateSneakerImagesMap(List<Sneaker> collection, List<InputStream> images) {
-        Map<Sneaker, InputStream> collectionMap = new HashMap<>();
-
-        for (int i = 0; i < collection.size(); i++) {
-            collectionMap.put(collection.get(i), images.get(i));
-        }
-        return collectionMap;
-    }
-
-    private List<InputStream> getCollectionImages(List<Sneaker> collection) {
-        List<InputStream> images = new LinkedList<>();
-
-        return images;
     }
 
 }

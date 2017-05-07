@@ -45,6 +45,7 @@
             <div class="jumbotron" id=sign-up-div>
                 <p>Sign up for Insole!</p>
 
+                <!--/*@thymesVar id="user" type="com.io2.model.User"*/-->
                 <form class="form-horizontal" th:object="${user}" role="form" action="/register" method="post">
                     <div class="form-group">
                         <label for="inputEmail" class="col-sm-2 control-label">Email</label>

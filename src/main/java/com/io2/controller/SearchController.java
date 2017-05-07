@@ -2,6 +2,7 @@ package com.io2.controller;
 
 import com.io2.model.Brand;
 import com.io2.repository.BrandRepository;
+import com.io2.service.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,8 @@ public class SearchController {
 
     @Autowired
     BrandRepository brandRepository;
+    @Autowired
+    ListService listService;
     private List<Brand> brandList;
     private Logger logger = Logger.getLogger(SearchController.class.getName());
 
@@ -43,6 +46,10 @@ public class SearchController {
             }
         }
 
+        result.removeAll(listService.getBuyList());
+
         return result;
     }
+
+
 }

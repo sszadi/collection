@@ -1,9 +1,9 @@
 package com.io2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by Niki on 2017-04-06.
@@ -17,6 +17,9 @@ public class Brand {
     @GeneratedValue
     private Long id;
     private String name;
+    @ManyToMany(mappedBy = "buyList")
+    @JsonBackReference
+    private Collection<User> usersList;
 
     public Long getId() {
         return id;
@@ -32,5 +35,13 @@ public class Brand {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Collection<User> getUsersList() {
+        return usersList;
+    }
+
+    public void setUsersList(Collection<User> usersList) {
+        this.usersList = usersList;
     }
 }

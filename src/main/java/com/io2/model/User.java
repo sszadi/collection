@@ -1,5 +1,6 @@
 package com.io2.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.io2.annotation.ValidEmail;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class User {
     private String password;
     private boolean enabled;
     private Collection<Role> roles;
+    private Collection<Brand> buyList;
 
     public void setId(long id) {
         this.id = id;
@@ -71,6 +73,7 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class, cascade = CascadeType.MERGE)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JsonManagedReference
     public Collection<Role> getRoles() {
         return roles;
     }
@@ -79,4 +82,15 @@ public class User {
         this.roles = roles;
     }
 
+    @ManyToMany
+    @JoinTable(name = "users_buylists", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "brand_id", referencedColumnName = "id"))
+    @JsonManagedReference
+    public Collection<Brand> getBuyList() {
+        return buyList;
+    }
+
+    public void setBuyList(Collection<Brand> buyList) {
+        this.buyList = buyList;
+    }
 }
