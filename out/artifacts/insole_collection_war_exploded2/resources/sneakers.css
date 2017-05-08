@@ -1,0 +1,27 @@
+#sneakers-div {
+    padding: 20px 50px 0 20px;
+    width: 75%;
+    margin-right: 50px;
+    float: right;
+}
+
+.snk-image {
+    max-width: 150%;
+}
+
+.table-user-information {
+    width: 80%;
+    float: right;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}

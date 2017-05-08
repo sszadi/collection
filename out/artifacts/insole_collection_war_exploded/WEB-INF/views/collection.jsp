@@ -57,8 +57,8 @@
             <div class="row" id="collection">
                 <c:forEach items="${collectionList}" var="sneakers">
                     <div class="col-xs-6 col-md-4" id="thumbnail-div">
-                        <a href="..." class="thumbnail">
-                            <img src="http://localhost:9999/images/${sneakers.filename}" alt="">
+                        <a href="/sneakers/id/${sneakers.id}" class="thumbnail snk-image">
+                            <img src="http://localhost:9999/images/${sneakers.filename}">
                             <h5>${sneakers.brand.name}</h5>
                             <p class="paragraph">${sneakers.size}</p>
                         </a>

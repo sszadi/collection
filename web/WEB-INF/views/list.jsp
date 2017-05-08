@@ -50,7 +50,13 @@
         <div class="jumbotron" id="image">
         </div>
 
+
         <div class=content>
+
+
+            <div class="menu">
+                <jsp:include page="menu.jsp"/>
+            </div>
 
             <div class="list-div">
                 <h4>Your WTB list.</h4>
@@ -76,9 +82,6 @@
 
             </div>
 
-            <div class="menu">
-                <jsp:include page="menu.jsp"/>
-            </div>
 
         </div>
 

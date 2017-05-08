@@ -9,6 +9,8 @@
           <element id="jpa-descriptors" facet="insole-collection/jpa/JPA" />
           <element id="library" level="application" name="jquery" />
           <element id="library" level="application" name="jquery-ui" />
+          <element id="library" level="application" name="bootstrap" />
+          <element id="library" level="application" name="jquery-1.10.2" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />

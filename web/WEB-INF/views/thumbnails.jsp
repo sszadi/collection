@@ -14,7 +14,7 @@
 
 <div class="row" id="row">
     <div class="col-xs-6 col-md-3" id="thumbnail-div">
-        <a href="/advert" class="thumbnail">
+        <a href="/sneakers" class="thumbnail">
             <img src="/web/images/im1.jpg" alt="...">
             <h5 class="description">ASICS Gel Lyte III Mortar</h5>
             <p class="paragraph">US 10.5, 200 USD</p>

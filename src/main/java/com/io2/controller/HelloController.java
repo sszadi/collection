@@ -37,14 +37,4 @@ public class HelloController {
     }
 
 
-
-//    @RequestMapping(value = "/add", method = RequestMethod.POST)
-//    public String formSupport(@ModelAttribute("form") @Valid Sneaker form, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "add";
-//        } else {
-//            //formularz wypełniony prawidłowo
-//            return "add";
-//        }
-//    }
 }

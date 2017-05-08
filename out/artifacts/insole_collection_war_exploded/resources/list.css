@@ -5,6 +5,7 @@
     margin-bottom: 10px;
 }
 
-.listbox{
+.listbox {
+    float: right;
     list-style-type: none;
 }
