@@ -19,4 +19,6 @@ public interface SneakerRepository extends CrudRepository<Sneaker, Long> {
 
     List<Sneaker> findByOwner_Id(Long id);
 
+    void delete(Sneaker sneaker);
+
 }

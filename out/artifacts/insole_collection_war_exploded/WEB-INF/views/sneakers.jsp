@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                    <button type="button" class="btn btn-primary">Yes</button>
+                                    <a type="button" href="/sneakers/delete/id/${sneakers.id}" class="btn btn-primary">Yes</a>
                                 </div>
                             </div>
                         </div>

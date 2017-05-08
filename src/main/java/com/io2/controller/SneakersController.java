@@ -21,13 +21,14 @@ public class SneakersController {
     public String showSneakersInfo(@PathVariable("id") Long id, Model model) {
         Sneaker sneaker = sneakerRepository.findById(id);
         model.addAttribute("sneakers", sneaker);
-        return "sneakers";
+        return "collection";
     }
 
     @RequestMapping("/sneakers/delete/id/{id}")
     public String deleteSneakers(@PathVariable("id") Long id, Model model) {
         Sneaker sneaker = sneakerRepository.findById(id);
-        model.addAttribute("sneakers", sneaker);
+        sneakerRepository.delete(sneaker);
+        model.addAttribute("delSucc", "message.delSucc");
         return "sneakers";
     }
 

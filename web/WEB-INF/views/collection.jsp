@@ -34,6 +34,17 @@
 
     </c:if>
 
+
+    <c:if test="${not empty delSucc}">
+    <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <spring:message code="message.delSucc">
+        </spring:message>
+    </div>
+
+    </c:if>
+
     <div class="container">
         <div class="jumbotron" id="image">
         </div>
