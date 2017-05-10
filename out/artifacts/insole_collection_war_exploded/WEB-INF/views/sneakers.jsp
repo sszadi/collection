@@ -57,7 +57,8 @@
                     </div>
 
                     <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button"
+                            <a href="/sneakers/edit/id/${sneakers.id}" data-original-title="Edit this user"
+                               data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
                           <a type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-danger"><i
                                   class="glyphicon glyphicon-remove"></i></a>

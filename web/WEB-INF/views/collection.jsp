@@ -62,20 +62,26 @@
 
                 <a href="/list" type="button" class="btn btn-default">My WTB list</a>
 
-                <a href="/add" type="button" class="btn btn-default">Add sneakers</a>
+                <a href="/add/${sneakers.id}" type="button" class="btn btn-default">Add sneakers</a>
             </div>
 
-            <div class="row" id="collection">
-                <c:forEach items="${collectionList}" var="sneakers">
-                    <div class="col-xs-6 col-md-4" id="thumbnail-div">
-                        <a href="/sneakers/id/${sneakers.id}" class="thumbnail snk-image">
-                            <img src="http://localhost:9999/images/${sneakers.filename}">
-                            <h5>${sneakers.brand.name}</h5>
-                            <p class="paragraph">${sneakers.size}</p>
-                        </a>
+            <c:forEach items="${collectionList}" var="sneakers" varStatus="loop">
+                <c:if test="${loop.index % 3 == 0}">
+                    <c:set var="index" value="${loop.index}"/>
+                    <div class="row" id="collection">
+                </c:if>
+                <div class="col-xs-6 col-md-4" id="thumbnail-div">
+                    <a href="/sneakers/id/${sneakers.id}" class="thumbnail snk-image">
+                        <img src="http://localhost:9999/images/${sneakers.filename}">
+                        <h5>${sneakers.brand.name}</h5>
+                        <p class="paragraph">${sneakers.size}</p>
+                    </a>
+                </div>
+                <c:if test="${loop.index != index and loop.index % 3 == 2}">
                     </div>
-                </c:forEach>
-            </div>
+                </c:if>
+            </c:forEach>
+
 
         </div>
 

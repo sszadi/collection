@@ -17,7 +17,7 @@ interface CollectionCreatorService {
 
     Map<Float, String> getSizes();
 
-    Boolean addSneaker(Sneaker sneaker, MultipartFile file) throws IOException;
+    Boolean addSneaker(Sneaker sneaker, MultipartFile file, Long id) throws IOException;
 
     String handleFileUpload(MultipartFile file) throws IOException;
 }

@@ -49,7 +49,11 @@ public class CollectionCreatorServiceImpl implements CollectionCreatorService {
         return sizes;
     }
 
-    public Boolean addSneaker(Sneaker sneaker, MultipartFile file) throws IOException {
+    public Boolean addSneaker(Sneaker sneaker, MultipartFile file, Long id) throws IOException {
+        if (id != null && sneakerRepository.findById(id) != null) {
+            sneaker.setId(id);
+        }
+
         User user = userService.getCurrentUser();
         sneaker.setOwner(user);
         String filename = handleFileUpload(file);

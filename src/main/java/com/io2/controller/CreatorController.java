@@ -5,10 +5,7 @@ import com.io2.service.CollectionCreatorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -24,16 +21,20 @@ public class CreatorController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String showSneakerCreator(Model model) {
+    public String showSneakerCreator(Model model, @ModelAttribute("sneakers") Sneaker sneakers) {
         model.addAttribute("brands", collectionCreatorService.getAllBrands());
         model.addAttribute("sizes", collectionCreatorService.getSizes());
-        model.addAttribute("sneaker", new Sneaker());
+        if (sneakers != null) {
+            model.addAttribute("sneaker", sneakers);
+        } else {
+            model.addAttribute("sneaker", new Sneaker());
+        }
         return "add";
     }
 
     @PostMapping("/add")
-    public String addSneaker(Sneaker sneaker, @RequestParam("file") MultipartFile file, Model model) throws IOException {
-        if (collectionCreatorService.addSneaker(sneaker, file)) {
+    public String addSneaker(Sneaker sneaker, @RequestParam("file") MultipartFile file, Model model, @RequestParam("id") Long id) throws IOException {
+        if (collectionCreatorService.addSneaker(sneaker, file, id)) {
             model.addAttribute("addSucc", true);
         } else {
             model.addAttribute("addError", true);

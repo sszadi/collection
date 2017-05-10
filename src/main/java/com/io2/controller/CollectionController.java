@@ -22,11 +22,11 @@ import java.util.List;
 public class CollectionController {
 
     @Autowired
-    SneakerRepository sneakerRepository;
+    private SneakerRepository sneakerRepository;
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
-    FileService fileService;
+    private FileService fileService;
 
 
     @RequestMapping(value = "/collection", method = RequestMethod.GET)

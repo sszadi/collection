@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
@@ -15,6 +16,10 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link type="text/css" href="${pageContext.request.contextPath}/resources/index.css" rel="stylesheet"/>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/add.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/scripts/preview-image.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/scripts/edit.js"></script>
+
 </head>
 <body>
 <div class="main-block">
@@ -30,8 +35,9 @@
             <div class="panel panel-info" id="sell-div">
                 <h3>Add sneakers to your collection.</h3>
                 <!--/*@thymesVar id="sneaker" type="com.io2.model.Sneaker"*/-->
-                <form enctype="multipart/form-data" method="post" th:object="${sneaker}" class="form-horizontal">
-                    <div class="form-group">
+                <form enctype="multipart/form-data" method="post" th:object="${sneaker}"
+                      class="form-horizontal">
+                    <div class="form-group" id="form-div">
                         <label for="modelSelect">Model</label>
                         <!--/*@thymesVar id="brand" type="com.io2.model.Brand"*/-->
                         <select class="form-control" id="modelSelect" th:field="*{brand}" name="brand" required>
@@ -51,18 +57,24 @@
                         </br>
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="number" th:field="*{price}" name="price" class="form-control"
-                                   aria-label="Amount (to the nearest dollar)" required>
+                            <input type="number" th:field="*{price}" min="1" name="price" class="form-control"
+                                   aria-label="Amount (to the nearest dollar)" required value="${sneakers.price}">
                             <span class="input-group-addon">.00</span>
                         </div>
-                        <div id="input-image-div">
-                            <label for="file">Image input</label>
-                            <input multiple type="file" id="file" name="file">
-                        </div>
-                        </br>
-                        <button type="submit" class="btn btn-default">Submit</button>
                     </div>
 
+                    <div id="input-image-div">
+                        <img src="http://localhost:9999/images/${sneakers.filename}" id="snk-image"
+                             class="thumbnail img-responsive">
+
+                        <input multiple type="file" id="file-input" name="file">
+
+                        </br>
+
+                        <input type="hidden" value="${sneakers.id}" name="id" />
+
+                        <button type="submit" id="submit-btn" class="btn btn-default">Submit</button>
+                    </div>
                 </form>
 
             </div>
@@ -72,11 +84,16 @@
             </div>
 
         </div>
-
     </div>
-
-
 </div>
+
+<c:if test="${not empty sneakers}">
+    <script>
+        var brand = '${sneakers.brand.id}';
+        var size = '${sneakers.size}';
+        edit(brand, size);
+    </script>
+</c:if>
 
 </body>
 </html>

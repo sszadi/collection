@@ -21,4 +21,5 @@ public interface SneakerRepository extends CrudRepository<Sneaker, Long> {
 
     void delete(Sneaker sneaker);
 
+
 }

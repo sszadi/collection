@@ -1,19 +1,33 @@
 #sell-div {
     padding: 20px 80px;
-    height: 500px;
     width: 75%;
-    margin-right: 50px;
     float: right;
+    margin: 0 55px;
     background: ghostwhite;
+    overflow: hidden;
+}
+
+#form-div {
+    margin-top: 20px;
+    float: left;
 }
 
 #input-image-div {
     width: inherit;
-    margin-top: 10px;
+    float: right;
+    overflow: hidden;
+    margin-top: 40px;
+}
 
+#snk-image {
+    height: 200px;
+    max-width: 300px;
 }
 
 #load-image {
     float: right;
 }
 
+#submit-btn {
+    float: right;
+}
