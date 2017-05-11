@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Insole</title>
@@ -46,40 +47,44 @@
                 <p>Sign up for Insole!</p>
 
                 <!--/*@thymesVar id="user" type="com.io2.model.User"*/-->
-                <form class="form-horizontal" th:object="${user}" role="form" action="/register" method="post">
+                <form:form class="form-horizontal" th:object="${user}" role="form" action="/register" method="post">
                     <div class="form-group">
                         <label for="inputEmail" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" name="email" class="form-control" id="inputEmail"
-                                   placeholder="Email" required>
+                            <form:input path="email" type="email" name="email" class="form-control" id="inputEmail"
+                                        placeholder="Email" required="required"/>
+                            <form:errors path="email" cssClass="error"/>
                         </div>
 
 
                         <label for="inputNick" class="col-sm-2 control-label">Nick</label>
                         <div class="col-sm-10">
-                            <input name="username" class="form-control"
-                                   id="inputNick"
-                                   placeholder="Username" required>
+                            <form:input path="username" name="username" class="form-control"
+                                        id="inputNick"
+                                        placeholder="Username" required="required"/>
+                            <form:errors path="username" cssClass="error"/>
                         </div>
 
                         <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" name="password" class="form-control"
-                                   id="inputPassword3"
-                                   placeholder="Password" required>
+                            <form:input path="password" type="password" name="password" class="form-control"
+                                        id="inputPassword3"
+                                        placeholder="Password" required="required"/>
+                            <form:errors path="password" cssClass="error"/>
                         </div>
 
                         <label for="repeatPassword" class="col-sm-2 control-label"></label>
                         <div class="col-sm-10">
-                            <input type="password" name="matchingPassword"
-                                   class="form-control"
-                                   id="repeatPassword"
-                                   placeholder="Enter password again" required>
+                            <form:input path="confirmPassword" type="password" name="matchingPassword"
+                                        class="form-control"
+                                        id="repeatPassword"
+                                        placeholder="Enter password again" required="required"/>
+                            <form:errors path="confirmPassword" cssClass="error"/>
 
                         </div>
                         <button type="submit" class="btn btn-default" id="submit-button">Submit</button>
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

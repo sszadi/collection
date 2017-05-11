@@ -40,25 +40,33 @@
                     <div class="form-group" id="form-div">
                         <label for="modelSelect">Model</label>
                         <!--/*@thymesVar id="brand" type="com.io2.model.Brand"*/-->
-                        <select class="form-control" id="modelSelect" th:field="*{brand}" name="brand" required>
+                        <select class="form-control" id="modelSelect" th:field="*{brand}" name="brand"
+                                required="required">
                             <c:forEach items="${brands}" var="brand" varStatus="loop">
                                 <option value="${brand.id}">${brand.name}</option>
                             </c:forEach>
                         </select>
+                        <form:errors path="model" cssClass="error"/>
                         </br>
                         <label for="sizeSelect">Size</label>
                         <!--/*@thymesVar id="sneaker" type="com.io2.model.Sneaker"*/-->
-                        <select multiple required name="size" th:object="${sneaker}" th:field="*{size}"
+                        <select required="required" name="size" th:object="${sneaker}"
+                                th:field="*{size}"
                                 class="form-control" id="sizeSelect">
                             <c:forEach items="${sizes}" var="size" varStatus="loop">
                                 <option value="${size.key}">${size.value}</option>
                             </c:forEach>
                         </select>
+                        <form:errors path="size" cssClass="error"/>
                         </br>
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="number" th:field="*{price}" min="1" name="price" class="form-control"
-                                   aria-label="Amount (to the nearest dollar)" required value="${sneakers.price}">
+                            <input type="number" th:field="*{price}" min="1" name="price"
+                                   class="form-control"
+                                   aria-label="Amount (to the nearest dollar)" required="required"
+                                   value="${sneakers.price}">
+                            <form:errors path="price" cssClass="error"/>
+
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
@@ -67,11 +75,11 @@
                         <img src="http://localhost:9999/images/${sneakers.filename}" id="snk-image"
                              class="thumbnail img-responsive">
 
-                        <input multiple type="file" id="file-input" name="file">
+                        <input type="file" id="file-input" name="file">
 
                         </br>
 
-                        <input type="hidden" value="${sneakers.id}" name="id" />
+                        <input type="hidden" value="${sneakers.id}" name="id"/>
 
                         <button type="submit" id="submit-btn" class="btn btn-default">Submit</button>
                     </div>

@@ -21,7 +21,6 @@
         <spring:message code="message.addError">
         </spring:message>
     </div>
-
     </c:if>
 
     <c:if test="${param.addSucc == true}">
@@ -31,18 +30,33 @@
         <spring:message code="message.addSucc">
         </spring:message>
     </div>
-
     </c:if>
 
-
-    <c:if test="${not empty delSucc}">
+    <c:if test="${param.delSucc == true}">
     <div class="alert alert-success" role="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <span class="sr-only">Error:</span>
         <spring:message code="message.delSucc">
         </spring:message>
     </div>
+    </c:if>
 
+    <c:if test="${param.editError == true}">
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <spring:message code="message.editError">
+        </spring:message>
+    </div>
+    </c:if>
+
+    <c:if test="${param.editSucc == true}">
+    <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <spring:message code="message.editSucc">
+        </spring:message>
+    </div>
     </c:if>
 
     <div class="container">
@@ -82,6 +96,8 @@
                 </c:if>
             </c:forEach>
 
+
+            <p id="collection-worth">Your collection is worth: ${worth} USD.</p>
 
         </div>
 

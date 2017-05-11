@@ -1,6 +1,7 @@
 package com.io2.validator;
 
 import com.io2.annotation.ValidEmail;
+import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -10,6 +11,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Niki on 2017-04-07.
  */
+@Component
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
 
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$";

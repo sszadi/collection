@@ -4,6 +4,7 @@ import com.io2.exception.EmailExistsException;
 import com.io2.model.User;
 import com.io2.model.UserDTO;
 import com.io2.service.UserServiceImpl;
+import com.io2.validator.UserFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,9 +28,16 @@ import java.util.logging.Logger;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserServiceImpl userService;
+    private final UserServiceImpl userService;
+    private final UserFormValidator userFormValidator;
+
     private static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
+
+    @Autowired
+    public UserController(UserServiceImpl userService, UserFormValidator userFormValidator) {
+        this.userService = userService;
+        this.userFormValidator = userFormValidator;
+    }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
@@ -42,6 +50,11 @@ public class UserController {
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
         User registeredUser;
+        userFormValidator.validate(userDTO, result);
+        if (result.hasErrors()) {
+            modelAndView.setViewName("sign-up");
+            return modelAndView;
+        }
         registeredUser = createUserAccount(userDTO);
 
         if (registeredUser == null) {

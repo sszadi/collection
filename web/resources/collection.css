@@ -13,3 +13,11 @@
     margin-left: 5px;
     width: 200px;
 }
+
+#collection-worth {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: royalblue;
+}

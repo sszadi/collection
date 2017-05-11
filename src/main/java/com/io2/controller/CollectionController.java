@@ -1,10 +1,8 @@
 package com.io2.controller;
 
 import com.io2.model.Sneaker;
-import com.io2.model.User;
-import com.io2.repository.SneakerRepository;
+import com.io2.service.CollectionService;
 import com.io2.service.FileService;
-import com.io2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,19 +20,18 @@ import java.util.List;
 public class CollectionController {
 
     @Autowired
-    private SneakerRepository sneakerRepository;
-    @Autowired
-    private UserService userService;
-    @Autowired
     private FileService fileService;
+    @Autowired
+    private CollectionService collectionService;
 
 
     @RequestMapping(value = "/collection", method = RequestMethod.GET)
     public String collection(Model model) {
-        User user = userService.getCurrentUser();
-        List<Sneaker> collection = sneakerRepository.findByOwner_Id(user.getId());
+        List<Sneaker> collection = collectionService.getAll();
         model.addAttribute("collectionList", collection);
 
+        Double worth = collectionService.getCollectionWorth(collection);
+        model.addAttribute("worth", worth);
         return "collection";
     }
 

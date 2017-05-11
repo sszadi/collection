@@ -5,6 +5,7 @@ import com.io2.model.User;
 import com.io2.model.UserDTO;
 import com.io2.repository.RoleRepository;
 import com.io2.repository.UserRepository;
+import com.io2.validator.UserFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,12 +22,17 @@ import java.util.Collections;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
 
     public User registerNewUser(UserDTO userDTO) throws EmailExistsException {
 

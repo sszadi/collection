@@ -1,7 +1,7 @@
 package com.io2.controller;
 
 import com.io2.model.Sneaker;
-import com.io2.service.CollectionCreatorServiceImpl;
+import com.io2.service.CreatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +17,13 @@ import java.io.IOException;
 public class CreatorController {
 
     @Autowired
-    private CollectionCreatorServiceImpl collectionCreatorService;
+    private CreatorService creatorService;
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showSneakerCreator(Model model, @ModelAttribute("sneakers") Sneaker sneakers) {
-        model.addAttribute("brands", collectionCreatorService.getAllBrands());
-        model.addAttribute("sizes", collectionCreatorService.getSizes());
+        model.addAttribute("brands", creatorService.getAllBrands());
+        model.addAttribute("sizes", creatorService.getSizes());
         if (sneakers != null) {
             model.addAttribute("sneaker", sneakers);
         } else {
@@ -34,10 +34,18 @@ public class CreatorController {
 
     @PostMapping("/add")
     public String addSneaker(Sneaker sneaker, @RequestParam("file") MultipartFile file, Model model, @RequestParam("id") Long id) throws IOException {
-        if (collectionCreatorService.addSneaker(sneaker, file, id)) {
-            model.addAttribute("addSucc", true);
+        if (id == null) {
+            if (creatorService.addSneaker(sneaker, file)) {
+                model.addAttribute("addSucc", true);
+            } else {
+                model.addAttribute("addError", true);
+            }
         } else {
-            model.addAttribute("addError", true);
+            if (creatorService.editSneaker(sneaker, file, id)) {
+                model.addAttribute("editSucc", true);
+            } else {
+                model.addAttribute("editError", true);
+            }
         }
         return "redirect:/collection";
     }

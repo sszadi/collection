@@ -18,7 +18,7 @@ import java.util.TreeMap;
  * Created by Niki on 2017-04-19.
  */
 @Service
-public class CollectionCreatorServiceImpl implements CollectionCreatorService {
+public class CreatorServiceImpl implements CreatorService {
 
     private Map<Float, String> sizes = new TreeMap<>();
     @Autowired
@@ -49,10 +49,7 @@ public class CollectionCreatorServiceImpl implements CollectionCreatorService {
         return sizes;
     }
 
-    public Boolean addSneaker(Sneaker sneaker, MultipartFile file, Long id) throws IOException {
-        if (id != null && sneakerRepository.findById(id) != null) {
-            sneaker.setId(id);
-        }
+    public Boolean addSneaker(Sneaker sneaker, MultipartFile file) throws IOException {
 
         User user = userService.getCurrentUser();
         sneaker.setOwner(user);
@@ -61,6 +58,14 @@ public class CollectionCreatorServiceImpl implements CollectionCreatorService {
         Sneaker result = sneakerRepository.save(sneaker);
         return result != null;
     }
+
+    public Boolean editSneaker(Sneaker sneaker, MultipartFile file, Long id) throws IOException {
+        if (sneakerRepository.findById(id) != null) {
+            sneaker.setId(id);
+        }
+        return addSneaker(sneaker, file);
+    }
+
 
     public String handleFileUpload(MultipartFile file) throws IOException {
         String filename = null;
