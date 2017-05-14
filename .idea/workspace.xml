@@ -7,9 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f7dc40b-cdae-4018-a0c9-4652ed43adec" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/views/user-profile.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/resources/profile.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/WEB-INF/views/user-profile.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded2/resources/profile.css" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/io2/controller/ThumbnailsController.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/io2/service/ThumbnailsService.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/io2/service/ThumbnailsServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/user-profile.jsp" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/profile.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/CollectionController.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/CollectionController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/HelloController.class" afterPath="$PROJECT_DIR$/out/artifacts/insole_collection_war_exploded/WEB-INF/classes/com/io2/controller/HelloController.class" />
@@ -1269,12 +1274,12 @@
       <workItem from="1494610893107" duration="3640000" />
       <workItem from="1494622826382" duration="78000" />
       <workItem from="1494655739955" duration="6376000" />
-      <workItem from="1494790181284" duration="6205000" />
+      <workItem from="1494790181284" duration="6551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102585000" />
+    <option name="totallyTimeSpent" value="102931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1351" height="726" extended-state="0" />
