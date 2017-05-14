@@ -2,13 +2,17 @@ package com.io2.controller;
 
 import com.io2.model.Sneaker;
 import com.io2.service.CreatorService;
+import com.io2.validator.SneakersValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Niki on 2017-04-19.
@@ -16,12 +20,21 @@ import java.io.IOException;
 @Controller
 public class CreatorController {
 
+    private final CreatorService creatorService;
+    private final SneakersValidation sneakersValidation;
+    private static final Logger LOGGER = Logger.getLogger(CreatorController.class.getName());
+
+
     @Autowired
-    private CreatorService creatorService;
+    public CreatorController(CreatorService creatorService, SneakersValidation sneakersValidation) {
+        this.creatorService = creatorService;
+        this.sneakersValidation = sneakersValidation;
+    }
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showSneakerCreator(Model model, @ModelAttribute("sneakers") Sneaker sneakers) {
+        LOGGER.log(Level.INFO, "Show form for add sneakers to collection.");
         model.addAttribute("brands", creatorService.getAllBrands());
         model.addAttribute("sizes", creatorService.getSizes());
         if (sneakers != null) {
@@ -33,14 +46,17 @@ public class CreatorController {
     }
 
     @PostMapping("/add")
-    public String addSneaker(Sneaker sneaker, @RequestParam("file") MultipartFile file, Model model, @RequestParam("id") Long id) throws IOException {
+    public String addSneaker(Sneaker sneaker, BindingResult result, @RequestParam(value = "file", required = false) MultipartFile file, Model model, @RequestParam("id") Long id) throws IOException {
         if (id == null) {
+            LOGGER.log(Level.INFO, "Add sneakers to collection.");
+            sneakersValidation.validate(sneaker, result);
             if (creatorService.addSneaker(sneaker, file)) {
                 model.addAttribute("addSucc", true);
             } else {
                 model.addAttribute("addError", true);
             }
         } else {
+            LOGGER.log(Level.INFO, "Edit sneakers.");
             if (creatorService.editSneaker(sneaker, file, id)) {
                 model.addAttribute("editSucc", true);
             } else {

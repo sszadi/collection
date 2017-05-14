@@ -13,7 +13,7 @@
 </head>
 <body>
 <ul class="nav navbar-nav navbar-right">
-    <li><a href="#">My profile</a></li>
+    <li><a href="/profile">My profile</a></li>
     <li><a href="<c:url value="/logout" />">Logout</a></li>
 </ul>
 </body>

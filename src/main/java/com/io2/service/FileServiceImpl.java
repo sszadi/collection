@@ -60,7 +60,6 @@ public class FileServiceImpl implements FileService {
     @Override
     public void getFile(String filename, HttpServletResponse response) {
         try {
-            logger.log(Level.INFO, "DUPA");
             BasicAWSCredentials awsCreds = new BasicAWSCredentials(accessKey, secretKey);
             AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                     .withCredentials(new AWSStaticCredentialsProvider(awsCreds))

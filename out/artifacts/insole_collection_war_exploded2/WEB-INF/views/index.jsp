@@ -15,6 +15,9 @@
 <head>
     <title>Insole</title>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css"/>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/index.css" rel="stylesheet"/>
 </head>
 
@@ -44,24 +47,31 @@
         </div>
 
     </c:if>
-    <div class=content>
-        <div class="container">
+
+    <c:if test="${not empty logPlease}">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <spring:message code="message.logPlease">
+            </spring:message>
+        </div>
+
+    </c:if>
+    <div class=container>
+        <div class="content">
             <div class="jumbotron" id=hello-div>
                 <h1 class="shadow">Insole</h1>
                 <p class="shadow">Create your own sneakers collection and make it bigger in one place!</p>
                 <p><a class="btn btn-primary btn-lg" href="/register" role="button">Sign up</a></p>
             </div>
-        </div>
 
 
-        <div class="menu">
-            <jsp:include page="menu.jsp"/>
-        </div>
+            <div class="menu">
+                <jsp:include page="menu.jsp"/>
+            </div>
 
-        <div class="thumbnails">
             <jsp:include page="thumbnails.jsp"/>
         </div>
-
     </div>
 </div>
 

@@ -10,6 +10,7 @@
 #form-div {
     margin-top: 20px;
     float: left;
+    width: 60%;
 }
 
 #input-image-div {
@@ -30,4 +31,25 @@
 
 #submit-btn {
     float: right;
+}
+
+#file-input {
+    max-width: 300px;
+}
+
+#add-div {
+    padding: 20px 50px;
+    width: 75%;
+    margin: 0 auto;
+    background: ghostwhite;
+    overflow: hidden;
+}
+
+#input-search {
+    width: 75%;
+    transition: width 1s ease-in-out;
+}
+
+#input-search:focus {
+    width: 90%;
 }

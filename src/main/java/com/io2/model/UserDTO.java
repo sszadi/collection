@@ -15,7 +15,7 @@ public class UserDTO {
     private String email;
     private String username;
     private String password;
-    private String matchingPassword;
+    private String confirmPassword;
 
     public void setEmail(String email) {
         this.email = email;
@@ -29,8 +29,8 @@ public class UserDTO {
         this.password = password;
     }
 
-    public void setMatchingPassword(String matchingPassword) {
-        this.matchingPassword = matchingPassword;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     @NotNull
@@ -50,8 +50,8 @@ public class UserDTO {
     }
 
     @NotNull
-    public String getMatchingPassword() {
-        return matchingPassword;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
 }

@@ -1,0 +1,22 @@
+#user-panel {
+    padding: 20px 50px;
+    width: 65%;
+    margin: 0 auto;
+    background-color: white;
+    overflow: hidden;
+    border: 1px solid #EFEFEF;
+
+}
+
+#user-info {
+    width: 100%;
+}
+
+#rating{
+    width: 1000px;
+    margin: 0 60px;
+}
+
+#rating-cont{
+    padding: 40px;
+}

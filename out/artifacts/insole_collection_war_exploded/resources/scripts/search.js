@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $(function () {
-        $("#input-search").autocomplete({
+        $("#inputSearch").autocomplete({
             source: function (request, response) {
                 $.ajax({
                     url: "/getBrands",

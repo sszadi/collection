@@ -4,6 +4,7 @@ import com.io2.model.Sneaker;
 import com.io2.service.CollectionService;
 import com.io2.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Niki on 2017-04-25.
@@ -23,11 +26,14 @@ public class CollectionController {
     private FileService fileService;
     @Autowired
     private CollectionService collectionService;
+    private static final Logger LOGGER = Logger.getLogger(CollectionController.class.getName());
 
 
+    @Secured("ROLE_USER")
     @RequestMapping(value = "/collection", method = RequestMethod.GET)
     public String collection(Model model) {
-        List<Sneaker> collection = collectionService.getAll();
+        LOGGER.log(Level.INFO, "Show user collection.");
+        List<Sneaker> collection = collectionService.getAllUserCollection();
         model.addAttribute("collectionList", collection);
 
         Double worth = collectionService.getCollectionWorth(collection);

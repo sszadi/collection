@@ -1,6 +1,6 @@
 package com.io2.validator;
 
-import com.io2.model.User;
+import com.io2.model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -19,7 +19,7 @@ public class UserFormValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return User.class.equals(aClass);
+        return UserDTO.class.equals(aClass);
     }
 
     @Override

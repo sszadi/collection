@@ -32,7 +32,7 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
         <form-login login-page="/login"
                     default-target-url="/welcome"
-                    authentication-failure-url="/login?error=true"
+                    authentication-failure-url="/badcredentials?error=true"
                     username-parameter="email"
                     password-parameter="password"/>
         <logout
@@ -80,6 +80,7 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
     <global-method-security secured-annotations="enabled" pre-post-annotations="enabled">
         <expression-handler ref="expressionHandler"/>
     </global-method-security>
+
 
     <beans:bean id="entityManagerFactory"
                 class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

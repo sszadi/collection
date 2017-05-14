@@ -3,6 +3,7 @@ package com.io2.controller;
 import com.io2.exception.EmailExistsException;
 import com.io2.model.User;
 import com.io2.model.UserDTO;
+import com.io2.service.ThumbnailsService;
 import com.io2.service.UserServiceImpl;
 import com.io2.validator.UserFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -30,48 +31,45 @@ public class UserController {
 
     private final UserServiceImpl userService;
     private final UserFormValidator userFormValidator;
-
+    private final ThumbnailsService thumbnailsService;
     private static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
     @Autowired
-    public UserController(UserServiceImpl userService, UserFormValidator userFormValidator) {
+    public UserController(UserServiceImpl userService, UserFormValidator userFormValidator, ThumbnailsService thumbnailsService) {
         this.userService = userService;
         this.userFormValidator = userFormValidator;
+        this.thumbnailsService = thumbnailsService;
+
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
         UserDTO userDTO = new UserDTO();
+        //  thumbnailsService.getThumbnails(model);
         model.addAttribute("user", userDTO);
         return "sign-up";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult result) {
-        ModelAndView modelAndView = new ModelAndView();
+    public String registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult result, Model model) {
         User registeredUser;
         userFormValidator.validate(userDTO, result);
-        if (result.hasErrors()) {
-            modelAndView.setViewName("sign-up");
-            return modelAndView;
-        }
+        //    thumbnailsService.getThumbnails(model);
         registeredUser = createUserAccount(userDTO);
+        LOGGER.log(Level.INFO, "Register new user.");
 
-        if (registeredUser == null) {
-            modelAndView.addObject("regError", "messages.regError");
-            modelAndView.setViewName("sign-up");
-            return modelAndView;
+        if (result.hasErrors() || registeredUser == null) {
+            model.addAttribute("regError", "messages.regError");
+            return "sign-up";
         }
 
-        if (!userService.isPasswordTheSame(userDTO.getPassword(), userDTO.getMatchingPassword())) {
-            modelAndView.addObject("passwordError", "messages.passwordError");
-            modelAndView.setViewName("sign-up");
-            return modelAndView;
+        if (!userService.isPasswordTheSame(userDTO.getPassword(), userDTO.getConfirmPassword())) {
+            model.addAttribute("passwordError", "messages.passwordError");
+            return "sign-up";
         }
 
-        modelAndView.addObject("regSucc", "messages.regSucc");
-        modelAndView.setViewName("index");
-        return modelAndView;
+        model.addAttribute("regSucc", "messages.regSucc");
+        return "index";
 
     }
 
@@ -85,7 +83,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginError() {
+    public String loginError(Model model) {
+        // thumbnailsService.getThumbnails(model);
+        model.addAttribute("logPlease", "message.logPlease");
+        return "index";
+    }
+
+    @RequestMapping(value = "/badcredentials", method = RequestMethod.GET)
+    public String badCredentials() {
         return "index";
     }
 
@@ -98,6 +103,13 @@ public class UserController {
             return null;
         }
         return registeredUser;
+    }
+
+    @RequestMapping(value = "/profile")
+    public String showUserProfile(Model model) {
+        User user = userService.getCurrentUser();
+        model.addAttribute("user", user);
+        return "user-profile";
     }
 
 }

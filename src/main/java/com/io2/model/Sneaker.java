@@ -23,7 +23,7 @@ public class Sneaker {
     @Column(name = "price", nullable = false)
     private Double price;
     @NotNull
-    @Column(name="filename", nullable = false)
+    @Column(name = "filename")
     private String filename;
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = User.class)

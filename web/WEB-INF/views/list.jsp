@@ -62,7 +62,7 @@
                 <h4>Your WTB list.</h4>
                 <form class="form-horizontal" method="post" action="/list/add">
                     <div class="input-group">
-                        <input type="text" id="input-search" class="form-control" name="name"
+                        <input type="text" id="inputSearch" class="form-control" name="name"
                                placeholder="Add to your WTB list...">
 
                         <span class="input-group-btn">

@@ -1,11 +1,7 @@
-#collection {
-    float: right;
-    width: 80%;
-    margin: 20px;
-}
 
 #nav-container h4 {
     float: left;
+    margin-left: 40px;
 }
 
 #nav-container a {
@@ -20,4 +16,10 @@
     width: 100%;
     text-align: center;
     color: royalblue;
+}
+
+#empty {
+    width: 85%;
+    float: right;
+    margin-top: 40px;
 }

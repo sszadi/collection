@@ -9,8 +9,8 @@
 <html>
 <body>
 <ul class="nav nav-pills nav-stacked">
-    <li role="presentation"><a href="/">Home</a></li>
-    <li role="presentation"><a href="/">Profile</a></li>
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/profile">Profile</a></li>
     <li role="presentation"><a href="/collection">My collection</a></li>
 </ul>
 </body>

@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Niki
-  Date: 2017-03-25
-  Time: 16:20
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,43 +6,29 @@
 </head>
 <body>
 
-<div class="row" id="row">
-    <div class="col-xs-6 col-md-3" id="thumbnail-div">
-        <a href="/sneakers" class="thumbnail">
-            <img src="/web/images/im1.jpg" alt="...">
-            <h5 class="description">ASICS Gel Lyte III Mortar</h5>
-            <p class="paragraph">US 10.5, 200 USD</p>
-        </a>
-        <a href="#" class="thumbnail">
-            <img src="/web/images/im2.jpg" alt="...">
-            <h5 class="description">ASICS Gel Lyte III New York ECP</h5>
-            <p class="paragraph">US 11, 350 USD</p>
-        </a>
-    </div>
-    <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-            <img src="/web/images/im3.jpg" alt="...">
-            <h5 class="description">ASICS Gel Lyte III Teal Dragon</h5>
-            <p class="paragraph">US 9, 500 USD</p>
-        </a>
-        <a href="#" class="thumbnail">
-            <img src="/web/images/im4.jpg" alt="...">
-            <h5 class="description">ASICS Gel Lyte III New York ECP</h5>
-            <p class="paragraph">US 12, 300 USD</p>
+
+<c:forEach items="${collectionList}" var="sneakers" varStatus="loop">
+    <c:if test="${loop.index % 3 == 0}">
+        <c:set var="index" value="${loop.index}"/>
+        <div class="row collection">
+    </c:if>
+    <div class="col-xs-6 col-md-4" id="thumbnail-div">
+        <a href="/sneakers/id/${sneakers.id}" class="thumbnail snk-image">
+            <img src="http://localhost:9999/images/${sneakers.filename}">
+            <h5>${sneakers.brand.name}</h5>
+            <p class="paragraph">${sneakers.price} USD</p>
         </a>
     </div>
-    <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-            <img src="/web/images/im5.jpg" alt="...">
-            <h5 class="description">ASICS Gel Lyte III Santa</h5>
-            <p class="paragraph">US 10, 160 USD</p>
-        </a>
-        <a href="#" class="thumbnail">
-            <img src="/web/images/im6.jpg" alt="...">
-            <h5 class="description">Nike Flyknit Racer Multicolor</h5>
-            <p class="paragraph">US 11, 450 USD</p>
-        </a>
-    </div>
-</div>
+    <c:if test="${loop.index != index and loop.index % 3 == 2}">
+        </div>
+    </c:if>
+</c:forEach>
+
+<%--<nav aria-label="">--%>
+    <%--<ul class="pager">--%>
+        <%--<li><a href="/thumbnails/?=page=1">Previous</a></li>--%>
+        <%--<li><a href="#">Next</a></li>--%>
+    <%--</ul>--%>
+<%--</nav>--%>
 </body>
 </html>

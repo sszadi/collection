@@ -47,8 +47,12 @@
                                     <td>US ${sneakers.size}</td>
                                 </tr>
                                 <tr>
-                                    <td>Price</td>
+                                    <td>Price:</td>
                                     <td>${sneakers.price} $</td>
+                                </tr>
+                                <tr>
+                                    <td>Owner:</td>
+                                    <td>${sneakers.owner.username}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -57,6 +61,9 @@
                     </div>
 
                     <span class="pull-right">
+                         <a href="/collection" data-original-title="Back"
+                            data-toggle="tooltip" type="button"
+                            class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-arrow-left"></i></a>
                             <a href="/sneakers/edit/id/${sneakers.id}" data-original-title="Edit this user"
                                data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
