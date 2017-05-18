@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * Created by Niki on 2017-05-08.
  */
 @Controller
-public class SneakersController {
+public class ChangeController {
 
     @Autowired
     private SneakerRepository sneakerRepository;
@@ -35,7 +35,8 @@ public class SneakersController {
     }
 
     @RequestMapping("/sneakers/edit/id/{id}")
-    public String editSneakers(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
+    public String editSneakers
+            (@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         Sneaker sneaker = sneakerRepository.findById(id);
         redirectAttributes.addFlashAttribute("sneakers", sneaker);
         return "redirect:/add";

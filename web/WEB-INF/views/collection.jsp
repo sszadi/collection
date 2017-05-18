@@ -79,8 +79,7 @@
                 <a href="/add/${sneakers.id}" type="button" class="btn btn-default">Add sneakers</a>
             </div>
 
-
-            <c:if test="${empty collectionList}">
+            <c:if test="${empty collectionList.content}">
                 <div class="alert alert-info" role="alert" id="empty">Your collection is empty! Add sneakers.</div>
             </c:if>
 
@@ -88,6 +87,34 @@
 
 
             <p id="collection-worth">Your collection is worth: ${worth} USD.</p>
+
+            <div id="pagination">
+                <nav aria-label="">
+                    <ul class="pager">
+                        <c:choose>
+
+                            <c:when test="${collectionList.first and collectionList.last}">
+                                <li class="disabled"><a>Previous</a></li>
+                                <li class="disabled"><a>Next</a></li>
+                            </c:when>
+                            <c:when test="${collectionList.first}">
+                                <li class="disabled"><a>Previous</a></li>
+                                <li class="active"><a href="/collection/show?page=${collectionList.number+1}">Next</a></li>
+                            </c:when>
+                            <c:when test="${collectionList.last}">
+                                <li class="active"><a href="/collection/show?page=${collectionList.number-1}">Previous</a>
+                                </li>
+                                <li class="disabled"><a>Next</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="active"><a href="/collection/show?page=${collectionList.number-1}">Previous</a>
+                                </li>
+                                <li class="active"><a href="/collection/show?page=${collectionList.number+1}">Next</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
+                </nav>
+            </div>
 
         </div>
 

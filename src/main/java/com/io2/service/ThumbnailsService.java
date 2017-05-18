@@ -1,5 +1,7 @@
 package com.io2.service;
 
+import com.io2.model.Sneaker;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 
@@ -8,7 +10,10 @@ import org.springframework.ui.Model;
  */
 public interface ThumbnailsService {
 
-    String ROLE_ANONYMOUS = "ROLE_ANONYMOUS";
+    String ROLE_USER = "ROLE_USER";
 
-    void getThumbnails(Model model, Pageable pageable);
+    Page<Sneaker> getThumbnails(Integer page);
+
+    void getUserCollectionThumb(Integer page, Model model);
+
 }

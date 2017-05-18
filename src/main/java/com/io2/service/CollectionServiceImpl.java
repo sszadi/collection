@@ -28,13 +28,20 @@ public class CollectionServiceImpl implements CollectionService {
 
 
     @Override
-    public List<Sneaker> getAllUserCollection() {
+    public Page<Sneaker> getUserCollectionPage(Pageable pageable) {
+        User user = userService.getCurrentUser();
+        return sneakerRepository.findByOwner_Id(user.getId(), pageable);
+    }
+
+    @Override
+    public List<Sneaker> getUserCollection() {
         User user = userService.getCurrentUser();
         return sneakerRepository.findByOwner_Id(user.getId());
     }
 
     @Override
-    public Double getCollectionWorth(List<Sneaker> collection) {
+    public Double getCollectionWorth() {
+        List <Sneaker> collection = getUserCollection();
         return collection.stream().mapToDouble(Sneaker::getPrice).sum();
     }
 

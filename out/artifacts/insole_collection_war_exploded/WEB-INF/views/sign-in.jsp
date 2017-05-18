@@ -12,7 +12,7 @@
 <head>
 
 <body>
-<form class="navbar-form navbar-right" action="login" method="post"
+<form class="navbar-form navbar-right" action="/login" method="post"
       id="log-in-form">
     <div class="form-group">
         <label class="sr-only" for="email">Email address</label>

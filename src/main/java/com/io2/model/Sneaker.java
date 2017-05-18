@@ -22,7 +22,6 @@ public class Sneaker {
     @NotNull
     @Column(name = "price", nullable = false)
     private Double price;
-    @NotNull
     @Column(name = "filename")
     private String filename;
     @NotNull

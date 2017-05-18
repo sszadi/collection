@@ -19,6 +19,8 @@ public interface SneakerRepository extends JpaRepository<Sneaker, Long> {
 
     Sneaker save(Sneaker sneaker);
 
+    Page<Sneaker> findByOwner_Id(Long id, Pageable pageable);
+
     List<Sneaker> findByOwner_Id(Long id);
 
     void delete(Sneaker sneaker);

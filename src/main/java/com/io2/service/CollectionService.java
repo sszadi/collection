@@ -11,11 +11,13 @@ import java.util.List;
  */
 public interface CollectionService {
 
-    int PAGE_SIZE = 50;
+    int PAGE_SIZE = 6;
 
-    List<Sneaker> getAllUserCollection();
+    Page<Sneaker> getUserCollectionPage(Pageable pageable);
 
-    Double getCollectionWorth(List<Sneaker> collection);
+    List<Sneaker> getUserCollection();
+
+    Double getCollectionWorth();
 
     Page<Sneaker> getAnotherCollections(Pageable pageable);
 

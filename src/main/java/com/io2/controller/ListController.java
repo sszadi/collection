@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,6 +42,16 @@ public class ListController {
             model.addAttribute("listSucc", true);
         } else {
             model.addAttribute("listError", true);
+        }
+        return "redirect:/list";
+    }
+
+    @RequestMapping("/list/delete/{id}")
+    public String deleteFromList(@PathVariable("id") Long id, Model model){
+        if (listService.delete(id)){
+            model.addAttribute("delListSucc", true);
+        } else {
+            model.addAttribute("delListError", true);
         }
         return "redirect:/list";
     }

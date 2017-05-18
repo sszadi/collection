@@ -46,7 +46,7 @@
 }
 
 #input-search {
-    width: 75%;
+    width: 500px;
     transition: width 1s ease-in-out;
 }
 

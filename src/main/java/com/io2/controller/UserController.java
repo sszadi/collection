@@ -7,6 +7,7 @@ import com.io2.service.ThumbnailsService;
 import com.io2.service.UserServiceImpl;
 import com.io2.validator.UserFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -42,30 +43,40 @@ public class UserController {
 
     }
 
+
+    @ModelAttribute
+    public void getThumbnails(Model model) {
+        model.addAttribute("collectionList", thumbnailsService.getThumbnails(0));
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
         UserDTO userDTO = new UserDTO();
-        //  thumbnailsService.getThumbnails(model);
         model.addAttribute("user", userDTO);
         return "sign-up";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult result, Model model) {
+    public String registerUserAccount
+            (@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult result, Model model) {
+
         User registeredUser;
         userFormValidator.validate(userDTO, result);
-        //    thumbnailsService.getThumbnails(model);
         registeredUser = createUserAccount(userDTO);
         LOGGER.log(Level.INFO, "Register new user.");
 
-        if (result.hasErrors() || registeredUser == null) {
-            model.addAttribute("regError", "messages.regError");
+        if (registeredUser == null) {
+            model.addAttribute("emailError", "messages.emailError");
             return "sign-up";
         }
 
         if (!userService.isPasswordTheSame(userDTO.getPassword(), userDTO.getConfirmPassword())) {
             model.addAttribute("passwordError", "messages.passwordError");
             return "sign-up";
+        }
+
+        if (result.hasErrors()){
+            model.addAttribute("regError", "messages.regError");
         }
 
         model.addAttribute("regSucc", "messages.regSucc");
@@ -84,7 +95,6 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginError(Model model) {
-        // thumbnailsService.getThumbnails(model);
         model.addAttribute("logPlease", "message.logPlease");
         return "index";
     }
@@ -105,6 +115,7 @@ public class UserController {
         return registeredUser;
     }
 
+    @Secured("ROLE_USER")
     @RequestMapping(value = "/profile")
     public String showUserProfile(Model model) {
         User user = userService.getCurrentUser();

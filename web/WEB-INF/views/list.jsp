@@ -36,11 +36,31 @@
 
     </c:if>
 
+    <c:if test="${param.delListError == true}">
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <spring:message code="message.delListError">
+            </spring:message>
+        </div>
+
+    </c:if>
+
     <c:if test="${param.listSucc == true}">
         <div class="alert alert-success" role="alert">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <span class="sr-only">Error:</span>
             <spring:message code="message.listSucc">
+            </spring:message>
+        </div>
+
+    </c:if>
+
+    <c:if test="${param.delListSucc == true}">
+        <div class="alert alert-success" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <spring:message code="message.delListSucc">
             </spring:message>
         </div>
 
@@ -76,7 +96,10 @@
 
                 <div class="list-group">
                     <c:forEach items="${buyList}" var="sneakers">
-                        <a href="#" class="list-group-item">${sneakers.name}</a>
+                        <p class="list-group-item">${sneakers.name}
+                            <a href="/list/delete/${sneakers.id}"> <span class="glyphicon glyphicon-remove"
+                                                                         id="del-span"
+                                                                         aria-hidden="true"></span></a></p>
                     </c:forEach>
                 </div>
 

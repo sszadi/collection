@@ -21,6 +21,13 @@ public class Brand {
     @JsonBackReference
     private Collection<User> usersList;
 
+    public Brand(String brand) {
+    }
+
+    public Brand(){
+
+    }
+
     public Long getId() {
         return id;
     }

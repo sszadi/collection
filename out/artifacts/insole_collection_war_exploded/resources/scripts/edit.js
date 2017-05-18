@@ -1,5 +1,3 @@
-function edit(brand, size) {
-    document.getElementById('modelSelect').value = brand;
+function edit(size) {
     document.getElementById('sizeSelect').value = size;
-
 }

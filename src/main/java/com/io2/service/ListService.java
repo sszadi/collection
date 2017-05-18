@@ -11,4 +11,6 @@ public interface ListService {
     Boolean add(String name);
 
     Collection<Brand> getBuyList();
+
+    boolean delete(Long id);
 }

@@ -1,13 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
 <head>
     <title>Title</title>
+    <link type="text/css" href="${pageContext.request.contextPath}/resources/thumbnails.css" rel="stylesheet"/>
 </head>
 <body>
 
-
-<c:forEach items="${collectionList}" var="sneakers" varStatus="loop">
+<c:forEach items="${collectionList.content}" var="sneakers" varStatus="loop">
     <c:if test="${loop.index % 3 == 0}">
         <c:set var="index" value="${loop.index}"/>
         <div class="row collection">
@@ -24,11 +26,5 @@
     </c:if>
 </c:forEach>
 
-<%--<nav aria-label="">--%>
-    <%--<ul class="pager">--%>
-        <%--<li><a href="/thumbnails/?=page=1">Previous</a></li>--%>
-        <%--<li><a href="#">Next</a></li>--%>
-    <%--</ul>--%>
-<%--</nav>--%>
 </body>
 </html>

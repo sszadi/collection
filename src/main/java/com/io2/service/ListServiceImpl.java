@@ -15,23 +15,32 @@ import java.util.Collection;
 @Service
 public class ListServiceImpl implements ListService {
 
+    private final BrandRepository brandRepository;
+    private final UserService userService;
+    private final UserRepository userRepository;
+    private User user;
+
     @Autowired
-    BrandRepository brandRepository;
-    @Autowired
-    UserService userService;
-    @Autowired
-    UserRepository userRepository;
+    public ListServiceImpl
+            (BrandRepository brandRepository, UserService userService, UserRepository userRepository) {
+        this.brandRepository = brandRepository;
+        this.userService = userService;
+        this.userRepository = userRepository;
+    }
 
     @Override
     public Boolean add(String name) {
         Brand brand = null;
+
         if (name != null) {
             brand = brandRepository.findByName(name);
         }
+
         if (brand == null) {
             return false;
         }
-        User user = userService.getCurrentUser();
+
+        user = userService.getCurrentUser();
         user.getBuyList().add(brand);
         userRepository.save(user);
         return true;
@@ -43,5 +52,20 @@ public class ListServiceImpl implements ListService {
         return user.getBuyList();
     }
 
+    @Override
+    public boolean delete(Long id) {
+        if (user == null){
+            user = userService.getCurrentUser();
+        }
+        Brand brand = brandRepository.findById(id);
+
+        if (brand == null || user == null){
+            return false;
+        }
+
+        user.getBuyList().remove(brand);
+        userRepository.save(user);
+        return true;
+    }
 
 }

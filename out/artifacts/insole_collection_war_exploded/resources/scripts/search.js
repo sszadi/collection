@@ -14,6 +14,7 @@ $(document).ready(function () {
                             return {
                                 label: v.name,
                                 value: v.name
+
                             };
                         }));
                     }

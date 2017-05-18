@@ -9,3 +9,7 @@
     float: right;
     list-style-type: none;
 }
+
+#del-span {
+    float: right;
+}

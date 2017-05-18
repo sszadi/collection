@@ -9,6 +9,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <fmt:setBundle basename="messages"/>
 <html>
@@ -62,7 +64,9 @@
             <div class="jumbotron" id=hello-div>
                 <h1 class="shadow">Insole</h1>
                 <p class="shadow">Create your own sneakers collection and make it bigger in one place!</p>
-                <p><a class="btn btn-primary btn-lg" href="/register" role="button">Sign up</a></p>
+                <sec:authorize access="hasRole('ROLE_ANONYMOUS')">
+                    <p><a class="btn btn-primary btn-lg" href="/register" role="button">Sign up</a></p>
+                </sec:authorize>
             </div>
 
 
@@ -73,6 +77,32 @@
             <jsp:include page="thumbnails.jsp"/>
         </div>
     </div>
+</div>
+
+<div id="pagination">
+    <nav aria-label="">
+        <ul class="pager">
+            <c:choose>
+
+                <c:when test="${collectionList.first and collectionList.last}">
+                    <li class="disabled"><a>Previous</a></li>
+                    <li class="disabled"><a>Next</a></li>
+                </c:when>
+                <c:when test="${collectionList.first}">
+                    <li class="disabled"><a>Previous</a></li>
+                    <li class="active"><a href="/thumbnails/?page=${collectionList.number+1}">Next</a></li>
+                </c:when>
+                <c:when test="${collectionList.last}">
+                    <li class="active"><a href="/thumbnails/?page=${collectionList.number-1}">Previous</a></li>
+                    <li class="disabled"><a>Next</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li class="active"><a href="/thumbnails/?page=${collectionList.number-1}">Previous</a></li>
+                    <li class="active"><a href="/thumbnails/?page=${collectionList.number+1}">Next</a></li>
+                </c:otherwise>
+            </c:choose>
+        </ul>
+    </nav>
 </div>
 
 </body>

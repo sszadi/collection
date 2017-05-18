@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <html xmlns:th="http://www.thymeleaf.org">
@@ -30,6 +31,15 @@
 
     <jsp:include page="headline.jsp"/>
 
+    <c:if test="${param.brandError == true}">
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <spring:message code="message.brandError">
+            </spring:message>
+        </div>
+    </c:if>
+
     <div class="container">
         <div class="jumbotron" id="image">
         </div>
@@ -40,6 +50,7 @@
                 <jsp:include page="menu.jsp"/>
             </div>
 
+
             <div class="panel panel-info" id="add-div">
                 <h3>Add sneakers to your collection.</h3>
                 <!--/*@thymesVar id="sneaker" type="com.io2.model.Sneaker"*/-->
@@ -47,18 +58,14 @@
                       class="form-horizontal">
                     <div class="form-group" id="form-div">
                         <label for="inputSearch">Model</label>
-                        <div class="input-group">
-                            <input type="text" id="inputSearch" class="form-control" name="name"
-                                   placeholder="Add to your WTB list...">
-
-                            <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Submit</button>
-                    </span>
-                        </div>
+                        <spring:bind path="sneaker.brand">
+                            <input type="text" id="inputSearch"
+                                   class="form-control"
+                                   name="brand" value="${sneakers.brand.name}" required>
+                        </spring:bind>
                         <form:errors path="model" cssClass="error"/>
                         </br>
                         <label for="sizeSelect">Size</label>
-                        <!--/*@thymesVar id="sneaker" type="com.io2.model.Sneaker"*/-->
                         <select multiple required="required" name="size" th:object="${sneaker}"
                                 th:field="*{size}"
                                 class="form-control" id="sizeSelect">
@@ -106,9 +113,8 @@
 
 <c:if test="${not empty sneakers}">
     <script>
-        var brand = '${sneakers.brand.id}';
         var size = '${sneakers.size}';
-        edit(brand, size);
+        edit(size);
     </script>
 </c:if>
 
