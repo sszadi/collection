@@ -17,7 +17,6 @@ import java.util.Collection;
  * Created by Niki on 2017-05-06.
  */
 @Controller
-//@Secured("ROLE_USER")
 public class ListController {
 
     private final ListService listService;

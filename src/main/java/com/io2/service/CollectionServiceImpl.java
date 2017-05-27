@@ -19,6 +19,7 @@ public class CollectionServiceImpl implements CollectionService {
 
     private final SneakerRepository sneakerRepository;
     private final UserService userService;
+    private User user;
 
     @Autowired
     public CollectionServiceImpl(SneakerRepository sneakerRepository, UserService userService) {
@@ -29,13 +30,13 @@ public class CollectionServiceImpl implements CollectionService {
 
     @Override
     public Page<Sneaker> getUserCollectionPage(Pageable pageable) {
-        User user = userService.getCurrentUser();
+        user = userService.getCurrentUser();
         return sneakerRepository.findByOwner_Id(user.getId(), pageable);
     }
 
     @Override
     public List<Sneaker> getUserCollection() {
-        User user = userService.getCurrentUser();
+        user = userService.getCurrentUser();
         return sneakerRepository.findByOwner_Id(user.getId());
     }
 
@@ -47,13 +48,19 @@ public class CollectionServiceImpl implements CollectionService {
 
     @Override
     public Page<Sneaker> getAnotherCollections(Pageable pageable) {
-        User user = userService.getCurrentUser();
+        user = userService.getCurrentUser();
         return sneakerRepository.findByOwner_IdNot(user.getId(), pageable);
     }
 
     @Override
     public Page<Sneaker> getAllSneakers(Pageable pageable) {
         return sneakerRepository.findAll(pageable);
+    }
+
+    @Override
+    public boolean isUserAnOwner(Sneaker sneaker) {
+        user = userService.getCurrentUser();
+        return user != null && sneaker.getOwner().getId() == user.getId();
     }
 
 }

@@ -2,6 +2,8 @@ package com.io2.controller;
 
 import com.io2.model.Sneaker;
 import com.io2.repository.SneakerRepository;
+import com.io2.repository.UserRepository;
+import com.io2.service.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,15 +16,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * Created by Niki on 2017-05-08.
  */
 @Controller
-public class ChangeController {
+public class EditController {
+
+    private final SneakerRepository sneakerRepository;
+    private final CollectionService collectionService;
 
     @Autowired
-    private SneakerRepository sneakerRepository;
+    public EditController(SneakerRepository sneakerRepository, CollectionService collectionService) {
+        this.sneakerRepository = sneakerRepository;
+        this.collectionService = collectionService;
+    }
 
     @RequestMapping("/sneakers/id/{id}")
     public String showSneakersInfo(@PathVariable("id") Long id, Model model) {
         Sneaker sneaker = sneakerRepository.findById(id);
         model.addAttribute("sneakers", sneaker);
+        model.addAttribute("isOwner", collectionService.isUserAnOwner(sneaker));
         return "sneakers";
     }
 

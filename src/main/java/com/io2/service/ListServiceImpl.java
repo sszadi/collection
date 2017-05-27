@@ -48,18 +48,16 @@ public class ListServiceImpl implements ListService {
 
     @Override
     public Collection<Brand> getBuyList() {
-        User user = userService.getCurrentUser();
+        user = userService.getCurrentUser();
         return user.getBuyList();
     }
 
     @Override
     public boolean delete(Long id) {
-        if (user == null){
-            user = userService.getCurrentUser();
-        }
+        user = userService.getCurrentUser();
         Brand brand = brandRepository.findById(id);
 
-        if (brand == null || user == null){
+        if (brand == null || user == null) {
             return false;
         }
 

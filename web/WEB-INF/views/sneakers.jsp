@@ -64,12 +64,13 @@
                          <a href="/collection" data-original-title="Back"
                             data-toggle="tooltip" type="button"
                             class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-arrow-left"></i></a>
+                        <c:if test="${isOwner}">
                             <a href="/sneakers/edit/id/${sneakers.id}" data-original-title="Edit this user"
                                data-toggle="tooltip" type="button"
                                class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
-                          <a type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-danger"><i
-                                  class="glyphicon glyphicon-remove"></i></a>
-
+                            <a type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-danger"><i
+                                    class="glyphicon glyphicon-remove"></i></a>
+                        </c:if>
                     </span>
 
                     <div id="myModal" class="modal fade" tabindex="-1" role="dialog">

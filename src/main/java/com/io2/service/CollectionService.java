@@ -22,5 +22,7 @@ public interface CollectionService {
     Page<Sneaker> getAnotherCollections(Pageable pageable);
 
     Page<Sneaker> getAllSneakers(Pageable pageable);
+
+    boolean isUserAnOwner(Sneaker sneaker);
 }
 
